@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.application.musica.Fragment.HomeFragment"
+    >
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rec_view"
+        android:padding="12dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/mini_bottom_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/mini_bottom_card"
+        app:cardCornerRadius="0dp"
+        android:layout_width="0dp"
+        android:clickable="true"
+        android:layout_height="82dp"
+        android:backgroundTint="@color/light_surface"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/rec_view"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_marginLeft="14dp"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:id="@+id/mini_bar_cover"
+                android:src="@drawable/icon_music"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingVertical="8dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                >
+
+
+                <TextView
+
+                    android:id="@+id/bottom_controller_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="14dp"
+                    android:layout_marginBottom="2dp"
+                    android:ellipsize="marquee"
+                    android:singleLine="true"
+                    android:text="Name of song"
+
+                    android:layout_gravity="center_vertical"
+                    android:textSize="18sp" />
+                <TextView
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/bottom_controller_album"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="14dp"
+                    android:ellipsize="marquee"
+                    android:singleLine="true"
+                    android:text="Artist"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right">
+
+                <ImageButton
+                    android:contentDescription="play button"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/mini_play_btn"
+                    android:layout_width="50dp"
+                    android:background="@android:color/transparent"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="14dp"
+                    android:src="@drawable/icon_play" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout >

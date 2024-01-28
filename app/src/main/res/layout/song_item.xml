@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="?attr/selectableItemBackground"
+    android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:cardBackgroundColor="@color/dark_surface"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
+
+        <ImageView
+            android:id="@+id/item_img"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="Icon"
+
+            app:srcCompat="@drawable/icon_music"
+          />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".5" />
+
+    <TextView
+        android:id="@+id/item_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="6dp"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:text="Vastav Arti"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cardView" />
+
+    <TextView
+        android:id="@+id/item_artist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Arigit Singh"
+        android:textSize="13sp"
+        android:maxLength="200"
+        android:ellipsize="marquee"
+        app:layout_constraintStart_toStartOf="@+id/item_name"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+</androidx.constraintlayout.widget.ConstraintLayout>
