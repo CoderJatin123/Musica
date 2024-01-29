@@ -2,21 +2,24 @@ package com.application.musica.ViewModel
 
 import android.content.Context
 import android.media.AudioManager
+import android.media.MediaPlayer
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.application.musica.Helper.MusicEventListener
 import com.application.musica.Interfaces.MusicCallbackInt
 import com.application.musica.MService
 import com.application.musica.Model.Music
 import com.application.musica.Repository.MusicRepo
 import kotlin.math.log
 
-class MusicViewModel( cxt: Context) : ViewModel(), MusicCallbackInt, AudioManager.OnAudioFocusChangeListener{
+class MusicViewModel(cxt: Context) : ViewModel(), MusicCallbackInt, AudioManager.OnAudioFocusChangeListener{
 
     private val _curretMusic=MutableLiveData<Music>()
     val curretMusic=_curretMusic
-
+    private var curentPosition= MutableLiveData<Int>()
     val loading =  MutableLiveData<Boolean>()
     val musicList = MutableLiveData<List<Music>>()
     private val _isPlaying = MutableLiveData<Boolean>()
@@ -24,19 +27,22 @@ class MusicViewModel( cxt: Context) : ViewModel(), MusicCallbackInt, AudioManage
     private val repo : MusicRepo
     lateinit var ms : MService
     private var wantsToPlay=false
+    private lateinit var mp: MediaPlayer
+
 
     init {
+        curentPosition.value=0
         loading.value=true
         _isPlaying.value=false
         repo= MusicRepo(cxt)
         musicList.value= repo.getAudioListfromRepo()
-
     }
 
     fun setMService(sm: MService){
         this.ms=sm
         loading.value=false
         loadLastMusic()
+
     }
 
     override fun onPause() {
@@ -63,6 +69,9 @@ class MusicViewModel( cxt: Context) : ViewModel(), MusicCallbackInt, AudioManage
         wantsToPlay=true
         _isPlaying.value=true
         _curretMusic.value=m
+        mp=ms.getMusicController()
+        mp.setOnCompletionListener(MusicEventListener(this))
+
     }
 
     override fun playNext() {
@@ -130,6 +139,14 @@ class MusicViewModel( cxt: Context) : ViewModel(), MusicCallbackInt, AudioManage
             _curretMusic.value =
                 musicList.value!!.filter { it.getaPath().equals(path) }[0]
             ms.load(_curretMusic.value!!)
+            mp=ms.getMusicController()
         }
     }
+    fun seekTo(pro : Int){
+        ms.seekTo(pro*1000)
+    }
+    fun getMediaPlayerDuration(): Int {
+        return (mp.duration/1000)
+    }
+
 }

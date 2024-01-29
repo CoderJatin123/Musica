@@ -107,6 +107,13 @@
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
+
+        <SeekBar
+            android:id="@+id/mseekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="18dp"/>
+
         <LinearLayout
             android:background="@color/dark_surface"
             android:gravity="center"

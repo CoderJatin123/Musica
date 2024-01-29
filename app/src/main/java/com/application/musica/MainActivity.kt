@@ -7,6 +7,8 @@ import android.content.ServiceConnection
 import android.media.AudioManager
 import android.os.Bundle
 import android.os.IBinder
+import android.view.Menu
+import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -35,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         bindService(Intent(this,MService::class.java),connection, Context.BIND_AUTO_CREATE)
         init()
         audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        setSupportActionBar(binding.toolbar)
     }
 
 
@@ -76,5 +79,19 @@ class MainActivity : AppCompatActivity() {
             AudioManager.AUDIOFOCUS_GAIN
         )
         super.onResume()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.options,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+//            R.id.op_equalizer->{
+//
+//            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

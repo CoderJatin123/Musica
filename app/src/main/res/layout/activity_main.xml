@@ -6,14 +6,24 @@
     android:layout_height="match_parent"
     tools:context="com.application.musica.BaseActivity">
 
-    <LinearLayout
-        android:id="@+id/main_frame"
+    <androidx.appcompat.widget.Toolbar
+        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:orientation="vertical" />
+        android:layout_height="wrap_content"
+        android:background="@color/light_surface"
+        app:title="@string/app_name"
+        android:id="@+id/toolbar"
+        />
+        <LinearLayout
+            android:id="@+id/main_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="?android:attr/actionBarSize"
+            android:orientation="vertical" />
+
 </FrameLayout>

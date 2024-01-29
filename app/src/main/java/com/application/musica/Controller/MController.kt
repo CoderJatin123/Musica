@@ -40,4 +40,13 @@ class MController:ControllerInt {
         player.setDataSource(m.getaPath())
         player.prepare()
     }
+
+    @Override
+    override fun getMusicController(): MediaPlayer {
+        return this.player
+    }
+
+    override fun seekTo(pro: Int) {
+        player.seekTo(pro)
+    }
 }
