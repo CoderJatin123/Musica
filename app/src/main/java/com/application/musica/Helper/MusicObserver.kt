@@ -17,8 +17,9 @@ class MusicObserver() {
             SetUi().setCover(binding.miniBarCover,m.getaPath().toString())
         }
     }
-    class FMusicObserver(private val binding: FragmentMusicBinding, val mvm : MusicViewModel):Observer<Music>, SeekBar.OnSeekBarChangeListener{
+    class FMusicObserver(private val binding: FragmentMusicBinding,val  mvm : MusicViewModel):Observer<Music>, SeekBar.OnSeekBarChangeListener{
 
+        var fromUser=false
         init {
             binding.mseekbar.setOnSeekBarChangeListener(this)
         }
@@ -30,16 +31,25 @@ class MusicObserver() {
         }
 
         override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-            mvm.seekTo(progress)
-            Log.d("TAG", "onProgressChanged: $progress")
+
+            if(fromUser)
+                mvm.seekTo(progress)
+//            Log.d("TAG", "onProgressChanged: $progress")
         }
 
         override fun onStartTrackingTouch(seekBar: SeekBar?) {
-
+            fromUser=true
         }
 
         override fun onStopTrackingTouch(seekBar: SeekBar?) {
+            fromUser=false
+        }
 
+    }
+
+    class MusicPositionObserver(val sb: SeekBar): Observer<Int>{
+        override fun onChanged(value: Int) {
+            sb.progress = value
         }
 
     }

@@ -29,10 +29,6 @@ class MusicFragment : Fragment()  {
 
         mvm.isPlaying.observe(viewLifecycleOwner,IconObserver(binding.musicPlaypause))
 
-        binding.backBtn.setOnClickListener {
-            requireActivity().onBackPressed()
-        }
-
         requireActivity().runOnUiThread(kotlinx.coroutines.Runnable {
 
         })
@@ -53,6 +49,8 @@ class MusicFragment : Fragment()  {
 
 //        binding.mseekbar.setOnSeekBarChangeListener(this)
 
+
+        mvm.curentPosition.observe(viewLifecycleOwner, MusicObserver.MusicPositionObserver(binding.mseekbar))
 
         return binding.root
     }
