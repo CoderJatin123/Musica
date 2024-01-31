@@ -7,6 +7,7 @@ import com.application.deligates.databinding.FragmentHomeBinding
 import com.application.deligates.databinding.FragmentMusicBinding
 import com.application.musica.Model.Music
 import com.application.musica.ViewModel.MusicViewModel
+import kotlin.math.ceil
 
 class MusicObserver() {
 
@@ -19,22 +20,28 @@ class MusicObserver() {
     }
     class FMusicObserver(private val binding: FragmentMusicBinding,val  mvm : MusicViewModel):Observer<Music>, SeekBar.OnSeekBarChangeListener{
 
-        var fromUser=false
+        private var fromUser=false
         init {
             binding.mseekbar.setOnSeekBarChangeListener(this)
         }
         override fun onChanged(m: Music) {
+
             SetUi().setCover(binding.musicCover,m.getaPath().toString())
             binding.musicArtist.text=m.getaArtist()
             binding.musicName.text=m.getaName()
-            binding.mseekbar.max=mvm.getMediaPlayerDuration()
+
+            mvm.getMediaPlayerDuration().let {
+                binding.mseekbar.max=it
+                binding.musicDuration.text= TimeConverter.getTime(it)
+            }
+
         }
 
         override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
 
-            if(fromUser)
+            if(fromUser) {
                 mvm.seekTo(progress)
-//            Log.d("TAG", "onProgressChanged: $progress")
+            }
         }
 
         override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -44,12 +51,12 @@ class MusicObserver() {
         override fun onStopTrackingTouch(seekBar: SeekBar?) {
             fromUser=false
         }
-
     }
 
-    class MusicPositionObserver(val sb: SeekBar): Observer<Int>{
+    class MusicPositionObserver(val b: FragmentMusicBinding): Observer<Int>{
         override fun onChanged(value: Int) {
-            sb.progress = value
+            b.mseekbar.progress = value
+            b.musicCurrentTime.text=TimeConverter.getTime(value)
         }
 
     }

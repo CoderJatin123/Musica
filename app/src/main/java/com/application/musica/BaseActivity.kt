@@ -1,6 +1,5 @@
 package com.application.musica
 
-import android.app.Activity
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -10,7 +9,6 @@ import android.media.audiofx.AudioEffect
 import android.os.Bundle
 import android.os.IBinder
 import android.view.Menu
-import android.view.MenuItem
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +18,7 @@ import com.application.deligates.R
 import com.application.deligates.databinding.ActivityMainBinding
 import com.application.musica.Fragment.HomeFragment
 import com.application.musica.Fragment.MusicFragment
+import com.application.musica.Service.MService
 import com.application.musica.ViewModel.MusicViewModel
 import com.application.musica.ViewModel.ViewModelFactory
 

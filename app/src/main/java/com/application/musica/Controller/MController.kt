@@ -8,17 +8,18 @@ import com.application.musica.Model.Music
 class MController:ControllerInt {
     private var player: MediaPlayer = MediaPlayer()
 
-    override fun start(m: Music) {
+    override fun start(m: Music):MediaPlayer {
 
-            if (player.isPlaying) {
-                player.stop()
-                player.reset()
-                player.release()
+            if (this.player.isPlaying) {
+                this.player.stop()
+                this.player.reset()
+                this.player.release()
             }
-        player= MediaPlayer()
-        player.setDataSource(m.getaPath())
-        player.prepare()
-        player.start()
+        this.player=MediaPlayer()
+        this.player.setDataSource(m.getaPath())
+        this.player.prepare()
+        this.player.start()
+        return this.player
     }
 
     override fun play() {

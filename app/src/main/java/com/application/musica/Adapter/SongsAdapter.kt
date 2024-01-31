@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.application.deligates.R
 import com.application.musica.Helper.SetUi
 import com.application.musica.Interfaces.MusicCallbackInt
-import com.application.musica.Interfaces.MusicSelection
+
 import com.application.musica.Model.Music
 
 

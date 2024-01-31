@@ -47,10 +47,7 @@ class MusicFragment : Fragment()  {
             mvm.playPrevious()
         }
 
-//        binding.mseekbar.setOnSeekBarChangeListener(this)
-
-
-        mvm.curentPosition.observe(viewLifecycleOwner, MusicObserver.MusicPositionObserver(binding.mseekbar))
+        mvm.curentPosition.observe(viewLifecycleOwner, MusicObserver.MusicPositionObserver(binding))
 
         return binding.root
     }
@@ -59,23 +56,10 @@ class MusicFragment : Fragment()  {
         mvm= ViewModelProvider(requireActivity())[MusicViewModel::class.java]
 
     }
-
     companion object {
         fun newInstance(): MusicFragment {
             return MusicFragment()
 
             }
     }
-
-//    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-//        mvm.seekTo(progress)
-//    }
-//
-//    override fun onStartTrackingTouch(seekBar: SeekBar?) {
-//        TODO("Not yet implemented")
-//    }
-//
-//    override fun onStopTrackingTouch(seekBar: SeekBar?) {
-//        TODO("Not yet implemented")
-//    }
 }

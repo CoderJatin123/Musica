@@ -4,7 +4,7 @@ import android.media.MediaPlayer
 import com.application.musica.Model.Music
 
 interface ControllerInt {
-    fun start(m: Music)
+    fun start(m: Music):MediaPlayer
     fun play()
     fun pause()
     fun stop()

@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Name"
@@ -50,28 +50,59 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="60dp"
-                app:cardCornerRadius="15dp"
+                app:cardCornerRadius="25dp"
                 android:backgroundTint="@android:color/transparent"
                 >
                 <ImageView
                     android:id="@+id/music_cover"
                     android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:minWidth="200dp"
-                    android:layout_height="wrap_content"
-                    android:minHeight="200dp"
-
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
                     android:src="@drawable/icon_music"/>
 
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 
-        <SeekBar
-            android:id="@+id/mseekbar"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp" />
+            android:orientation="vertical"
+            android:layout_marginBottom="14dp"
+            android:layout_marginHorizontal="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginHorizontal="15dp"
+                >
+                <TextView
+                    android:textSize="16sp"
+                    android:layout_weight="1"
+                    android:id="@+id/music_current_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00:00"
+                    />
+                <TextView
+                    android:textSize="16sp"
+                    android:layout_weight="1"
+                    android:textAlignment="textEnd"
+                    android:id="@+id/music_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00:00"
+                    />
+            </LinearLayout>
+
+            <SeekBar
+                android:id="@+id/mseekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 />
+        </LinearLayout>
+
 
         <LinearLayout
             android:background="@color/light_surface"
