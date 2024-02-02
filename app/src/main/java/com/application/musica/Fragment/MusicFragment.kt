@@ -11,6 +11,7 @@ import com.application.deligates.R
 import com.application.deligates.databinding.FragmentHomeBinding
 import com.application.deligates.databinding.FragmentMusicBinding
 import com.application.musica.Helper.IconObserver
+import com.application.musica.Helper.MusicFlowObserver
 import com.application.musica.Helper.MusicObserver
 import com.application.musica.ViewModel.MusicViewModel
 
@@ -24,9 +25,9 @@ class MusicFragment : Fragment()  {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        init()
-        binding= FragmentMusicBinding.inflate(inflater,container,false)
 
+        binding= FragmentMusicBinding.inflate(inflater,container,false)
+        init()
         mvm.isPlaying.observe(viewLifecycleOwner,IconObserver(binding.musicPlaypause))
 
         requireActivity().runOnUiThread(kotlinx.coroutines.Runnable {
@@ -48,12 +49,17 @@ class MusicFragment : Fragment()  {
         }
 
         mvm.curentPosition.observe(viewLifecycleOwner, MusicObserver.MusicPositionObserver(binding))
+        binding.musicShuffle.setOnClickListener { mvm.setShuffle() }
+        binding.musicRepeat.setOnClickListener { mvm.setRepeat() }
 
         return binding.root
     }
 
     private fun init(){
         mvm= ViewModelProvider(requireActivity())[MusicViewModel::class.java]
+        mvm.repeat.observe(viewLifecycleOwner, MusicFlowObserver.RepeatObserver(binding.musicRepeat))
+        mvm.shuffle.observe(viewLifecycleOwner, MusicFlowObserver.ShuffleObserver(binding.musicShuffle))
+
 
     }
     companion object {

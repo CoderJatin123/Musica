@@ -107,6 +107,7 @@
         <LinearLayout
             android:background="@color/light_surface"
             android:gravity="center"
+            android:paddingHorizontal="20dp"
             android:layout_width="match_parent"
             android:layout_height="100dp">
             <LinearLayout
@@ -114,7 +115,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 >
-
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_shuffle"
+                    android:layout_gravity="center"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:backgroundTint="@android:color/transparent"
+                    android:id="@+id/music_shuffle"/>
             </LinearLayout>
             <ImageButton
                 android:id="@+id/music_previous"
@@ -144,8 +152,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:gravity="right"
                 >
-
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_norepeat"
+                    android:layout_gravity="center"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:backgroundTint="@android:color/transparent"
+                    android:id="@+id/music_repeat"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

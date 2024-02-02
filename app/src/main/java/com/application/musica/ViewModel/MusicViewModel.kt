@@ -30,18 +30,23 @@ class MusicViewModel(cxt: Context) : ViewModel(), MusicCallbackInt, AudioManager
     val isPlaying: LiveData<Boolean> = _isPlaying
     private val repo: MusicRepo
     lateinit var ms: MService
+    var shuffle= MutableLiveData<Boolean>()
+    var repeat= MutableLiveData<Boolean>()
+
+
     private var wantsToPlay = false
     private lateinit var mp: MediaPlayer
     private val audioFocusHandler : AudioFocusHandler
 
     init {
-
         curentPosition.value = 0
         loading.value = true
         _isPlaying.value = false
         repo = MusicRepo(cxt)
         musicList.value = repo.getAudioListfromRepo()
         audioFocusHandler=AudioFocusHandler(this)
+        shuffle.value=repo.isShuffle
+        repeat.value=repo.isRepeat
     }
 
     fun setMService(sm: MService) {
@@ -130,6 +135,13 @@ class MusicViewModel(cxt: Context) : ViewModel(), MusicCallbackInt, AudioManager
 }
     private fun setHandler(){
         handler.post(createRunnable(handler))
+    }
+
+     fun setShuffle(){
+            shuffle.value=repo.setShuffle()
+    }
+     fun setRepeat(){
+            repeat.value=repo.setRepeat()
     }
 
 }

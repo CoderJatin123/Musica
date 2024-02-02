@@ -23,6 +23,7 @@ class MusicObserver() {
         private var fromUser=false
         init {
             binding.mseekbar.setOnSeekBarChangeListener(this)
+
         }
         override fun onChanged(m: Music) {
 
